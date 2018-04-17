@@ -1,0 +1,159 @@
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+ <net id="n-14D4-CA5B4-0" type ="http://www.pnml.org/version-2009/grammar/ptnet">
+  <name>
+   <text>buffer4</text>
+  </name>
+ <page id="g-14D4-CA5B9-1">
+  <place id="p-14D4-CA5BB-2">
+  <name>
+   <text>A</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="30" y="50"/>
+   </graphics>
+  </place>
+  <place id="p-14D4-CA5C3-3">
+  <name>
+   <text>B</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="35" y="170"/>
+   </graphics>
+  </place>
+  <place id="p-14D4-CA5C6-4">
+  <name>
+   <text>C</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="195" y="50"/>
+   </graphics>
+  </place>
+  <place id="p-14D4-CA5C8-5">
+  <name>
+   <text>D</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="195" y="170"/>
+   </graphics>
+  </place>
+  <transition id="t-14D4-CA5CA-6">
+  <name>
+   <text>r</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="115" y="110"/>
+   </graphics>
+  </transition>
+  <arc id="e-14D4-CA5CE-7" source="p-14D4-CA5C3-3" target="t-14D4-CA5CA-6">
+    <arbitraryoperator id="id_g" name="g">
+	<input>
+        	<usersort declaration="idX"/>
+        </input>
+        <output>
+		<usersort declaration="id1"/>
+	</output>
+    </arbitraryoperator>
+  </arc>
+  <arc id="e-14D4-CA5D0-8" source="t-14D4-CA5CA-6" target="p-14D4-CA5C8-5">
+    <weight numberconstant="1"/>
+    <constant refconstant="idc"/>
+  </arc>
+  <arc id="e-14D4-CA5D1-9" source="t-14D4-CA5CA-6" target="p-14D4-CA5C6-4">
+    <weight numberconstant="1"/>
+    <constant refconstant="idc"/>
+  </arc>
+  <arc id="e-14D4-CA5D1-10" source="p-14D4-CA5BB-2" target="t-14D4-CA5CA-6">
+    <arbitraryoperator id="id_g" name="g">
+	<input>
+        	<usersort declaration="idX"/>
+        </input>
+        <output>
+		<usersort declaration="id1"/>
+	</output>
+    </arbitraryoperator>
+  </arc>
+ </page>
+ <equation>
+  <summand>
+   <numberconstant value="1"/>
+   <term>
+    <variable refvariable="idA"/>
+   </term>
+  </summand>
+  <subtrahend>
+   <numberconstant value="1"/>
+   <term>
+    <arbitraryoperator id="id_f" name="f">
+     <input>
+      <usersort declaration="idB"/>
+     </input>
+     <output>
+      <usersort declaration="id1"/>
+     </output>
+    </arbitraryoperator>
+   </term>
+  </subtrahend>
+  <subtrahend>
+     <numberconstant value="1"/>
+     <term>
+       <arbitraryoperator id="id_f" name="f">
+	 <input>
+        	<arbitraryoperator id="id_g" name="g">
+			 <input>
+				<usersort declaration="idC"/>
+			 </input>
+			 <output>
+				<usersort declaration="id1"/>
+			 </output>
+      		</arbitraryoperator>
+         </input>
+         <output>
+		<usersort declaration="id1"/>
+	 </output>
+       </arbitraryoperator>
+     </term>
+   </subtrahend>
+   <summand>
+     <numberconstant value="1"/>
+     <term>
+       <arbitraryoperator id="id_g" name="g">
+	 <input>
+        	<usersort declaration="idD"/>
+         </input>
+         <output>
+		<usersort declaration="id1"/>
+	 </output>
+       </arbitraryoperator>
+     </term>
+   </summand>   
+   <result>
+     <numberconstant value="1"/>
+     <term>
+       <arbitraryoperator id="id_g" name="g">
+	 <input>
+        	<usersort declaration="idc"/>
+         </input>
+         <output>
+		<usersort declaration="id1"/>
+	 </output>
+       </arbitraryoperator>
+     </term>
+   </result>
+ </equation>
+ </net>
+</pnml>

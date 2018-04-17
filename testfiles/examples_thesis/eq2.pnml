@@ -1,0 +1,90 @@
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+ <net id="n-11E8-F193A-0" type ="http://www.pnml.org/version-2009/grammar/ptnet">
+  <name>
+   <text>buffer2</text>
+  </name>
+ <page id="g-11E8-F1943-1">
+  <place id="p-11E8-F1945-2">
+  <name>
+   <text>A</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="30" y="50"/>
+   </graphics>
+  </place>
+  <place id="p-11E8-F1952-3">
+  <name>
+   <text>B</text>
+    <graphics>
+     <offset x="10" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="30" y="290"/>
+   </graphics>
+  </place>
+  <transition id="t-11E8-F195A-4">
+  <name>
+   <text>a</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="30" y="170"/>
+   </graphics>
+  </transition>
+  <arc id="e-11E8-F1962-5" source="t-11E8-F195A-4" target="p-11E8-F1952-3">
+    <weight numberconstant="1"/>
+    <variable refvariable="idX"/>
+  </arc>
+  <arc id="e-11E8-F1966-6" source="p-11E8-F1945-2" target="t-11E8-F195A-4">
+    <arbitraryoperator id="id_g" name="g">
+	<input>
+        	<usersort declaration="idX"/>
+        </input>
+        <output>
+		<usersort declaration="id1"/>
+	</output>
+    </arbitraryoperator>
+  </arc>
+ </page>
+<equation>
+   <summand>
+     <numberconstant value="1"/>
+     <term>
+       <variable refvariable="idA"/>
+     </term>
+   </summand>
+   <subtrahend>
+    <numberconstant value="1"/>
+     <term>
+       <arbitraryoperator id="id_f" name="f">
+	 <input>
+        <usersort declaration="idc"/>
+     </input>
+     <output>
+		<usersort declaration="id1"/>
+	 </output>
+       </arbitraryoperator>
+     </term>
+   </subtrahend>  
+   <result>
+     <numberconstant value="2"/>
+     <term>
+       <arbitraryoperator id="id_f" name="f">
+	 <input>
+        	<usersort declaration="idc"/>
+         </input>
+         <output>
+		<usersort declaration="id1"/>
+	 </output>
+       </arbitraryoperator>
+     </term>
+   </result>
+ </equation>
+ </net>
+</pnml>

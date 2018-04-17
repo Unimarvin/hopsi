@@ -1,0 +1,17 @@
+t 30.0 90.0 a 0 w n
+p 270.0 90.0 B 0 n
+t 210.0 30.0 b 0 w n
+t 210.0 150.0 c 0 w n
+t 390.0 90.0 d 0 w n
+p 150.0 90.0 C 0 n
+p 30.0 30.0 A 0 e
+e c C 1 n
+e B c 1 n
+e B d 1 n
+e b B 1 n
+e C b 1 n
+e a C 1 n
+e a A 1 n
+h buffer3
+
+

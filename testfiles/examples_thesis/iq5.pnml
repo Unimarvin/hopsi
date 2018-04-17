@@ -1,0 +1,160 @@
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+ <net id="n-1348-C2BCA-0" type ="http://www.pnml.org/version-2009/grammar/ptnet">
+  <name>
+   <text>buffer3</text>
+  </name>
+ <page id="g-1348-C2BCF-1">
+  <place id="p-1348-C2BD1-2">
+  <name>
+   <text>A</text>
+    <graphics>
+     <offset x="10" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="30" y="30"/>
+   </graphics>
+  </place>
+  <place id="p-1348-C2BD9-3">
+  <name>
+   <text>C</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="270" y="90"/>
+   </graphics>
+  </place>
+  <place id="p-1348-C2BDC-4">
+  <name>
+   <text>B</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="150" y="90"/>
+   </graphics>
+  </place>
+  <transition id="t-1348-C2BDD-5">
+  <name>
+   <text>a</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="30" y="90"/>
+   </graphics>
+  </transition>
+  <transition id="t-1348-C2BE1-6">
+  <name>
+   <text>b</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="210" y="30"/>
+   </graphics>
+  </transition>
+  <transition id="t-1348-C2BE4-7">
+  <name>
+   <text>c</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="210" y="150"/>
+   </graphics>
+  </transition>
+  <transition id="t-1348-C2BE6-8">
+  <name>
+   <text>d</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="390" y="90"/>
+   </graphics>
+  </transition>
+  <!-- c->C -->
+  <arc id="e-1348-C2BE8-9" source="t-1348-C2BE4-7" target="p-1348-C2BDC-4">
+    <weight numberconstant="1"/>
+    <variable refvariable="idX"/>
+  </arc>
+  <!-- B->c -->
+  <arc id="e-1348-C2BE9-10" source="p-1348-C2BD9-3" target="t-1348-C2BE4-7">
+    <weight numberconstant="1"/>
+    <variable refvariable="idX"/>
+  </arc>
+  <!-- B->d -->
+  <arc id="e-1348-C2BEB-11" source="p-1348-C2BD9-3" target="t-1348-C2BE6-8">
+    <arbitraryoperator id="id_g" name="g">
+	<input>
+        	<usersort declaration="idX"/>
+        </input>
+        <output>
+		<usersort declaration="id1"/>
+	</output>
+    </arbitraryoperator>
+  </arc>
+  <!-- b->B -->
+  <arc id="e-1348-C2BEB-12" source="t-1348-C2BE1-6" target="p-1348-C2BD9-3">
+    <weight numberconstant="1"/>
+    <variable refvariable="idX"/>
+  </arc>
+  <!-- C->b -->
+  <arc id="e-1348-C2BEC-13" source="p-1348-C2BDC-4" target="t-1348-C2BE1-6">
+    <weight numberconstant="1"/>
+    <variable refvariable="idX"/>
+  </arc>
+  <!-- a->C -->
+  <arc id="e-1348-C2BEE-14" source="t-1348-C2BDD-5" target="p-1348-C2BDC-4">
+    <arbitraryoperator id="id_f" name="f">
+	<input>
+        	<usersort declaration="idX"/>
+        </input>
+        <output>
+		<usersort declaration="id1"/>
+	</output>
+    </arbitraryoperator>
+  </arc>
+  <!-- a->A -->
+  <arc id="e-1348-C2BEF-15" source="t-1348-C2BDD-5" target="p-1348-C2BD1-2">
+    <weight numberconstant="1"/>
+    <variable refvariable="idX"/>
+  </arc>
+ </page>
+ <inequation>
+   <subtrahend>
+     <numberconstant value="3"/>
+     <term>
+       <arbitraryoperator id="id_f" name="f">
+	 <input>
+        	<usersort declaration="idA"/>
+         </input>
+         <output>
+		<usersort declaration="id1"/>
+	 </output>
+       </arbitraryoperator>
+     </term>
+   </subtrahend>
+   <summand>
+     <numberconstant value="7"/>
+     <term>
+       <variable refvariable="idB"/>
+     </term>
+   </summand>
+   <result>
+     <numberconstant value="1"/>
+     <term>
+       <usersort declaration="idc"/>
+     </term>
+   </result>
+ </inequation>
+ </net>
+</pnml>

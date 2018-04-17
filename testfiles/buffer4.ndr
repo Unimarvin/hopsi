@@ -1,0 +1,12 @@
+p 35.0 170.0 B 0 n
+p 195.0 170.0 D 0 n
+t 115.0 110.0 r 0 w n
+p 195.0 50.0 C 0 n
+p 30.0 50.0 A 0 n
+e B r 1 n
+e r D 1 n
+e r C 1 n
+e A r 1 n
+h buffer4
+
+

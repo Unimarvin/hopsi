@@ -1,0 +1,176 @@
+<!-- concur16 -> submission.pdf erstes Netz -->
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+ <net id="n-1822-4D39E-0" type ="http://www.pnml.org/version-2009/grammar/ptnet">
+  <name>
+   <text>buffer1</text>
+  </name>
+ <page id="g-1822-4D3A4-1">
+  <place id="p-1822-4D3A5-2">
+  <name>
+   <text>D</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="30" y="50"/>
+   </graphics>
+  </place>
+  <place id="p-1822-4D3AE-3">
+  <name>
+   <text>A</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="30" y="130"/>
+   </graphics>
+  </place>
+  <place id="p-1822-4D3B1-4">
+  <name>
+   <text>B</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="30" y="210"/>
+   </graphics>
+  </place>
+  <place id="p-1822-4D3B3-5">
+  <name>
+   <text>C</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="30" y="290"/>
+   </graphics>
+  </place>
+  <place id="p-1822-4D3B5-6">
+  <name>
+   <text>E</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="350" y="170"/>
+   </graphics>
+  </place>
+  <transition id="t-1822-4D3B7-7">
+  <name>
+   <text>t</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="190" y="170"/>
+   </graphics>
+  </transition>
+  <arc id="e-1822-4D3BC-8" source="t-1822-4D3B7-7" target="p-1822-4D3B5-6">
+    <arbitraryoperator id="id_f" name="f">
+	<input>
+        	<usersort declaration="idW"/>
+        </input>
+        <output>
+		<usersort declaration="id1"/>
+	</output>
+    </arbitraryoperator>
+  </arc>
+  <arc id="e-1822-4D3BD-9" source="p-1822-4D3B3-5" target="t-1822-4D3B7-7">
+    <variable refvariable="idW"/>
+  </arc>
+  <arc id="e-1822-4D3BE-10" source="p-1822-4D3B1-4" target="t-1822-4D3B7-7">
+    <arbitraryoperator id="id_f" name="f">
+	<input>
+        	<usersort declaration="idY"/>
+        </input>
+        <output>
+		<usersort declaration="id1"/>
+	</output>
+  </arbitraryoperator>
+  </arc>
+  <arc id="e-1822-4D3BF-11" source="p-1822-4D3AE-3" target="t-1822-4D3B7-7">
+    <arbitraryoperator id="id_g" name="g">
+	<input>
+        	<usersort declaration="idW"/>
+        </input>
+        <output>
+		<usersort declaration="id1"/>
+	</output>
+    </arbitraryoperator>
+  </arc>
+  <arc id="e-1822-4D3C0-12" source="p-1822-4D3A5-2" target="t-1822-4D3B7-7">
+    <weight numberconstant="2"/>
+    <variable refvariable="idZ"/>
+  </arc>
+ </page>
+ <inequation>
+   <summand>
+     <numberconstant value="4"/>
+     <term>
+       <arbitraryoperator id="id_f" name="f">
+	 <input>
+        	<usersort declaration="idA"/>
+         </input>
+         <output>
+		<usersort declaration="id1"/>
+	 </output>
+       </arbitraryoperator>
+     </term>
+   </summand>
+   <summand>
+     <numberconstant value="3"/>
+     <term>
+       <arbitraryoperator id="id_g" name="g">
+	 <input>
+        	<usersort declaration="idB"/>
+         </input>
+         <output>
+		<usersort declaration="id1"/>
+	 </output>
+       </arbitraryoperator>
+     </term>
+   </summand>
+   <subtrahend>
+     <numberconstant value="5"/>
+     <term>
+       <arbitraryoperator id="id_f" name="f">
+	 <input>
+        	<arbitraryoperator id="id_g" name="g">
+			 <input>
+				<usersort declaration="idC"/>
+			 </input>
+			 <output>
+				<usersort declaration="id1"/>
+			 </output>
+       		</arbitraryoperator>
+         </input>
+         <output>
+		<usersort declaration="id1"/>
+	 </output>
+       </arbitraryoperator>
+     </term>
+   </subtrahend>
+   <subtrahend>
+     <numberconstant value="1"/>
+     <term>
+       <variable refvariable="idD"/>
+     </term>
+   </subtrahend>
+   <summand>
+     <numberconstant value="0"/>
+     <term>
+       <variable refvariable="idE"/>
+     </term>
+   </summand>
+   <result>
+     <numberconstant value="0"/>
+   </result>
+ </inequation>
+ </net>
+</pnml>

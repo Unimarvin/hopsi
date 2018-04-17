@@ -1,0 +1,30 @@
+t 70.0 50.0 produce 0 w n
+t 70.0 210.0 dispose 0 w n
+t 350.0 120.0 order 0 w n
+t 470.0 50.0 {pick-up} 0 w n
+p 250.0 120.0 Vitrine 0 s
+t 170.0 150.0 withdraw 0 w n
+t 70.0 290.0 {enter-shop} 0 w n
+t 470.0 290.0 {leave-shop} 0 w n
+p 470.0 120.0 Wallet 0 s
+p 350.0 290.0 Shop 0 s
+p 250.0 50.0 Storage 0 n
+t 170.0 90.0 offer 0 w n
+p 70.0 130.0 Fresh 0 w
+e withdraw Fresh 1 n
+e Vitrine withdraw 1 n
+e produce Fresh 1 n
+e produce Storage 1 n
+e Storage {pick-up} 1 n
+e Wallet {pick-up} 1 n
+e order Wallet 1 n
+e Vitrine order 1 n
+e offer Vitrine 1 n
+e Fresh offer 1 n
+e Fresh dispose 1 n
+e {enter-shop} Shop 1 n
+e Shop {leave-shop} 1 n
+e Shop order 1 n
+h buffer5
+
+

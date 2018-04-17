@@ -1,0 +1,298 @@
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+ <net id="n-6F85-AFFCD-0" type ="http://www.pnml.org/version-2009/grammar/ptnet">
+  <name>
+   <text>buffer5</text>
+  </name>
+ <page id="g-6F85-AFFE2-1">
+  <place id="p-6F85-AFFE8-2">
+  <name>
+   <text>Fresh</text>
+    <graphics>
+     <offset x="-10" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="70" y="130"/>
+   </graphics>
+  </place>
+  <place id="p-6F85-B0049-3">
+  <name>
+   <text>Shop</text>
+    <graphics>
+     <offset x="0" y="10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="350" y="290"/>
+   </graphics>
+  </place>
+  <place id="p-6F85-B0052-4">
+  <name>
+   <text>Storage</text>
+    <graphics>
+     <offset x="0" y="-10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="250" y="50"/>
+   </graphics>
+  </place>
+  <place id="p-6F85-B005F-5">
+  <name>
+   <text>Vitrine</text>
+    <graphics>
+     <offset x="0" y="10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="250" y="120"/>
+   </graphics>
+  </place>
+  <place id="p-6F85-B0063-6">
+  <name>
+   <text>Wallet</text>
+    <graphics>
+     <offset x="0" y="10" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="470" y="120"/>
+   </graphics>
+  </place>
+  <transition id="t-6F85-B006B-7">
+  <name>
+   <text>dispose</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="70" y="210"/>
+   </graphics>
+  </transition>
+  <transition id="t-6F85-B0078-8">
+  <name>
+   <text>enter-shop</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="70" y="290"/>
+   </graphics>
+  </transition>
+  <transition id="t-6F85-B007F-9">
+  <name>
+   <text>leave-shop</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="470" y="290"/>
+   </graphics>
+  </transition>
+  <transition id="t-6F85-B0082-10">
+  <name>
+   <text>offer</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="170" y="90"/>
+   </graphics>
+  </transition>
+  <transition id="t-6F85-B008F-11">
+  <name>
+   <text>order</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="350" y="120"/>
+   </graphics>
+  </transition>
+  <transition id="t-6F85-B0093-12">
+  <name>
+   <text>pick-up</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="470" y="50"/>
+   </graphics>
+  </transition>
+  <transition id="t-6F85-B009E-13">
+  <name>
+   <text>produce</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="70" y="50"/>
+   </graphics>
+  </transition>
+  <transition id="t-6F85-B00A3-14">
+  <name>
+   <text>withdraw</text>
+    <graphics>
+     <offset x="0" y="0" />
+    </graphics>
+  </name>
+   <graphics>
+    <position x="170" y="150"/>
+   </graphics>
+  </transition>
+  <!-- Shop->order -->
+  <arc id="e-6F85-B00B0-15" source="p-6F85-B0049-3" target="t-6F85-B008F-11">
+   <weight numberconstant="1"/>
+   <variable refvariable="CU"/>
+  </arc>
+  <!-- order->Wallet -->
+  <arc id="e-6F85-B00B8-16" source="t-6F85-B008F-11" target="p-6F85-B0063-6">
+   <arbitraryoperator id="id_voucher" name="voucher">
+	   <input>
+     <arbitraryoperator id="id_good" name="good">
+	     <input>
+       <usersort declaration="OF"/>
+      </input>
+      <output>
+		     <usersort declaration="id1"/>
+	     </output>
+     </arbitraryoperator>
+     <usersort declaration="CU"/>
+    </input>
+    <output>
+		   <usersort declaration="id1"/>
+	   </output>
+   </arbitraryoperator>
+  </arc>
+  <!-- Wallet->pick-up -->
+  <arc id="e-6F85-B00BB-17" source="p-6F85-B0063-6" target="t-6F85-B0093-12">
+   <weight numberconstant="1"/>
+   <variable refvariable="VO"/>
+  </arc>
+  <!-- Storage->pick-up -->
+  <arc id="e-6F85-B00BD-18" source="p-6F85-B0052-4" target="t-6F85-B0093-12">
+   <arbitraryoperator id="id_good" name="good">
+    <input>
+     <usersort declaration="VO"/>
+    </input>
+    <output>
+     <usersort declaration="id1"/>
+    </output>
+   </arbitraryoperator>
+  </arc>
+  <!-- produce->Storage -->
+  <arc id="e-6F85-B00C0-19" source="t-6F85-B009E-13" target="p-6F85-B0052-4">
+   <weight numberconstant="1"/>
+   <variable refvariable="GO"/>
+  </arc>
+  <!-- produce->Fresh -->
+  <arc id="e-6F85-B00C2-20" source="t-6F85-B009E-13" target="p-6F85-AFFE8-2">
+   <weight numberconstant="1"/>
+   <variable refvariable="GO"/>
+  </arc>
+  <!-- Shop->leave-shop -->
+  <arc id="e-6F85-B00C5-21" source="p-6F85-B0049-3" target="t-6F85-B007F-9">
+   <weight numberconstant="1"/>
+   <variable refvariable="CU"/>
+  </arc>
+  <!-- enter-shop->Shop -->
+  <arc id="e-6F85-B00C7-22" source="t-6F85-B0078-8" target="p-6F85-B0049-3">
+   <weight numberconstant="1"/>
+   <variable refvariable="CU"/>
+  </arc>
+  <!-- Fresh->dispose -->
+  <arc id="e-6F85-B00CD-23" source="p-6F85-AFFE8-2" target="t-6F85-B006B-7">
+   <weight numberconstant="1"/>
+   <variable refvariable="GO"/>
+  </arc>
+  <!-- withdraw->Fresh -->
+  <arc id="e-6F85-B00CE-24" source="t-6F85-B00A3-14" target="p-6F85-AFFE8-2">
+   <arbitraryoperator id="id_good" name="good">
+    <input>
+     <usersort declaration="VO"/>
+    </input>
+    <output>
+     <usersort declaration="id1"/>
+    </output>
+   </arbitraryoperator>
+  </arc>
+  <!-- Fresh->offer -->
+  <arc id="e-6F85-B00D1-25" source="p-6F85-AFFE8-2" target="t-6F85-B0082-10">
+   <weight numberconstant="1"/>
+   <variable refvariable="GO"/>
+  </arc>
+  <!-- offer->Vitrine -->
+  <arc id="e-6F85-B00D3-26" source="t-6F85-B0082-10" target="p-6F85-B005F-5">
+   <arbitraryoperator id="id_offer" name="offer">
+	   <input>
+     <usersort declaration="GO"/>
+     <usersort declaration="PR"/>
+    </input>
+    <output>
+		   <usersort declaration="id1"/>
+	   </output>
+   </arbitraryoperator>
+  </arc>
+  <!-- Vitrine->withdraw -->
+  <arc id="e-6F85-B00D6-27" source="p-6F85-B005F-5" target="t-6F85-B00A3-14">
+   <weight numberconstant="1"/>
+   <variable refvariable="OF"/>
+  </arc>
+  <!-- Vitrine->order -->
+  <arc id="e-6F85-B00D8-28" source="p-6F85-B005F-5" target="t-6F85-B008F-11">
+   <weight numberconstant="1"/>
+   <variable refvariable="OF"/>
+  </arc>
+ </page>
+  <inequation>
+   <subtrahend>
+    <numberconstant value="1"/>
+    <term>
+     <variable refvariable="Fresh"/>
+    </term>
+   </subtrahend>
+   <summand>
+    <numberconstant value="1"/>
+    <term>
+     <variable refvariable="Storage"/>
+    </term>
+   </summand>
+   <subtrahend>
+    <numberconstant value="1"/>
+    <term>
+     <arbitraryoperator id="id_good" name="good">
+    	 <input>
+      	<usersort declaration="Vitrine"/>
+      </input>
+      <output>
+     		<usersort declaration="id1"/>
+    	 </output>
+     </arbitraryoperator>
+    </term>
+   </subtrahend>
+   <subtrahend>
+    <numberconstant value="1"/>
+    <term>
+     <arbitraryoperator id="id_good" name="good">
+    	 <input>
+      	<usersort declaration="Wallet"/>
+      </input>
+      <output>
+     		<usersort declaration="id1"/>
+    	 </output>
+     </arbitraryoperator>
+    </term>
+   </subtrahend>
+   <result>
+    <numberconstant value="0"/>
+   </result>
+  </inequation>
+ </net>
+</pnml>
